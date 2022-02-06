@@ -1,0 +1,47 @@
+{"intents": [
+        {"tag": "Definition",
+         "patterns": ["What is an earthquake?", "Earthquake", "Definition of Earthquake.", "Explain earthquake.", "Define Earthquake."],
+         "responses": ["An earthquake occurs when rocks break and slip along a fault in the earth. Energy is released during an earthquake in several forms, including as movement along the fault, as heat, and as seismic waves that radiate out from the source in all directions and cause the ground to shake, sometimes hundreds of kilometers away."],
+         "context_set": ""
+        },
+
+        {"tag": "Causes",
+         "patterns": ["What causes earthquakes?", "Why earthquakes occur?", "Reasons behind earthquake", "Why do earthquakes happen?", "Causes for earthquake"],
+         "responses": ["Earthquakes are caused by the slow deformation of the outer, brittle portions of tectonic plates, the earth's outermost layer of crust and upper mantle. Due to the heating and cooling of the rock below these plates, the resulting convection causes the adjacently overlying plates to move, and, under great stress, deform. The rates of plate movements range from about 2 to 12 centimeters per year. Sometimes, tremendous energy can build up within a single, or between neighbouring plates. If the accumulated stress exceeds the strength of the rocks making up these brittle zones, the rocks can break suddenly, releasing the stored energy as an earthquake."],
+         "context_set": ""
+        },
+	
+	{"tag": "Moving Vehicle",
+         "patterns": ["Earthquake while driving", "what to do if an earthquake occurs while I'm driving", "Earthquake while in a car", "Stuck in car during earthquake", "Driving in an earthquake"],
+         "responses": ["If you are in a moving vehicle, stop as quickly and safely as possible.\nMove your car to the shoulder or curb, away from utility poles, overhead wires, and under- or overpasses.\nStay in the car and set the parking brake. A car may jiggle violently on its springs, but it is a good place to stay until the shaking stops.\nTurn on the radio for emergency broadcast information.\nIf a power line falls on the car, stay inside until a trained person removes the wire.\nWhen it is safe to begin driving again, watch for hazards created by the earthquake, such as breaks in the pavement, downed utility poles and wires, rising water levels, fallen overpasses, or collapsed bridges."],
+         "context_set": ""
+        },
+
+	{"tag": "Safety Kit",
+         "patterns": ["How to prepare an eathquake safety kit?", "What should I keep in my safety kit?","first aid kit", "safety kit", "Necessary items to have for eathquake safety", "Basic supplies to have during earthquake"],
+         "responses": ["At a minimum, you must have these basic supplies in your kit.\nWater: You must keep enough supply of water as it is essential for your survival and is a basic need. And you will require it for drinking as well as sanitation. You must carry water supply for at least three days.\nFood: You must include non-perishable food in your emergency supply kit. Also, keep food items which are easy to prepare.\nFlashlight: As the power supply may get disrupted, thus it is advisable to keep a flashlight for your safety.\nFirst aid kit: Keeping a first aid kit should be your utmost priority. It may include medicines, bandage strips, hand sanitizer, band-aids, etc.\nOther tools like extra batteries, whistle to signal other people during the time of emergency, candles, scissors, knife, personal hygiene items etc. must be kept.\nYou must have enough supply of medicines and also carry your personal identity documents with you which may include address proof, insurance policies, etc.\nEnsure that you carry a cell phone charger or portable charger with yourself during the time of crisis as you never know when your phone may run out of battery.\nCash is mandatory and you must carry extra cash as you may require it during the crisis and ATMs may not be operational.\nYou must also carry maps of the area where you are travelling and emergency blanket, extra clothes along with you."],
+         "context_set": ""
+        },
+
+	{"tag": "Damages",
+         "patterns": ["What causes damage?", "How do earthquakes cause damage?", "What causes the destruction during an earthquake?", "How do earthquakes cause destruction?"],
+         "responses": ["Most earthquake damage is caused by ground shaking. The magnitude or size of an earthquake, distance to the earthquake focus or source, type of faulting, depth, and type of material are important factors in determining the amount of ground shaking that might be produced at a particular site. Where there is an extensive history of earthquake activity, these parameters can often be estimated.\nThe magnitude of an earthquake, for instance, influences ground shaking in several ways. Large earthquakes usually produce ground motions with large amplitudes and long durations. Large earthquakes also produce strong shaking over much larger areas than do smaller earthquakes. In addition, the amplitude of ground motion decreases with increasing distance from the focus of an earthquake. The frequency content of the shaking also changes with distance. Close to the epicenter, both high (rapid)and low (slow)-frequency motions are present. Farther away, low-frequency motions are dominant, a natural consequence of wave attenuation in rock. The frequency of ground motion is an important factor in determining the severity of damage to structures and which structures are affected."],
+         "context_set": ""
+        },
+
+        {"tag": "After",
+         "patterns": ["What do do after an earthquake?", "When earthquake is over.", "What steps to take after an earthquake has ended."],
+         "responses": [
+                "Stay calm.\nHelp the injured, if any. Speak calmly with family members, especially children about what has just happened, in order to relieve stress.\nStay tuned to the radio and follow instructions.\nUse the telephone only in an emergency.\nDo not enter damaged buildings.\nTo prevent fire, check the chimneys or have them checked before using the furnace or fireplace. Check all gas lines.\nEarthquakes can trigger huge ocean waves called tsunamis. The best warning is the earthquake itself and residents in tsunami risk areas should be prepared to evacuate to higher ground immediately (at least 10 metres above sea level) in the case of a large undersea earthquake. Stay tuned to your radio during a disaster."
+         ],
+         "context_set": ""
+        },
+
+	{"tag": "During",
+         "patterns": ["What should you do during an earthquake?","What should you do if you're in the middle of an earthquake?", "how to face earthquakes?", "How can I stay safe during earthquakes?", "Earthquake safety tips.", "Tips to stay safe during an eathquake.", "What steps to take in the middle of an eathquake?"],
+         "responses": [
+                 "Falling objects pose the greatest danger during a major earthquake. \nIf you are indoors, take cover under a desk, table, bed, or doorways and against inside walls and staircase. Stay away from glass doors, glass panes, windows, or outside doors. Many types of objects may fall and cause damage or injuries. Of prime concern, therefore, is protection from falling objects such as framed pictures, light fixtures, plaster from ceilings or the upper part of walls, or chimneys which may fall outside or through the roof into the house.\nHere is what to do:\n\nStay calm - don't panic.\nIf you are indoors, stay there. Do not run outside: you could be hit by flying debris or bits of glass. Take cover under, and hold on to a sturdy desk, a table, or a bed - or stand in a doorframe. Never use the elevators (they may have been damaged and/or the power may fail).\nIf you are outdoors, stay there. Keep away from power lines and buildings. (House chimneys are likely to topple during a strong earthquake).\nIf you are in a vehicle, stop and park away from buildings, bridges and overpasses."],
+         "context_set": ""
+        }
+   ]
+}
