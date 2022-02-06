@@ -2,6 +2,7 @@
 
 <img src="images/PHOTO-Climate-Collage-Diagonal-Design-NOAA-Communications-080621.jpg" width="600">
 
+Image credit: NOAA
 
 Find out more about this project at its [Devpost page](https://devpost.com/submit-to/14056-aws-disaster-response-hackathon/manage/submissions).
 
