@@ -2,16 +2,19 @@ import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.preprocessing import LabelEncoder
 import pickle 
+from sklearn.preprocessing import MinMaxScaler
 
 def predictAffected(df1):
     # load the model from disk
     bst = XGBRegressor()  # init model
-    bst.load_model('./affected_model/models/finalxgboost.model')  # load data     
+    bst.load_model('./affected_model/models/finalxgboost2.model')  # load data     
     X_test = df1
-    pred = bst.predict(X_test)
+    scaler = MinMaxScaler()
+    X_test_scaled = scaler.fit_transform(X_test)
+    pred = bst.predict(X_test_scaled)
     return pred
    
-def predict():
+"""def predict():
     bst = XGBRegressor()  # init model
     bst.load_model('./affected_model/models/wids1.model')  # load data
     df_test = pd.read_csv('./affected_model/data/test.csv')
@@ -31,5 +34,5 @@ def predict():
     X_test = X_test.drop('building_class', axis=1)
     X_test = X_test.drop('facility_type', axis=1)
     pred = bst.predict(X_test)
-    return pred
+    return pred"""
 

@@ -122,11 +122,12 @@ elif selection == 'Estimate Food and shelter items':
         #country = c1.selectbox('Country',('China','Indonesia','Iran','Turkey','Japan','Peru','US','Italy','Afghanistan'))
     with c2:
         magnitude = c2.selectbox('Magnitude',(4,4.5,5,5.5,6,6.5))
+        # print(magnitude)
     #with c3:
         #mmi = c3.selectbox('MMI',('1','2','3','4','5','6'))
-   
+    affectedpopulation = 0
+    details = {}
     btnResult = st.button("Estimate Relief Items")
-    #st.write(magnitude)
     if btnResult:
         if country == 'Nepal':
             details = {
@@ -161,18 +162,26 @@ elif selection == 'Estimate Food and shelter items':
         df_col = pd.DataFrame(details,index = ['a'])      
         affectedpopulation_df = inf.predictAffected(df_col)
         affectedpopulation = affectedpopulation_df[0]
+
+    with st.expander("Enter the number of affected people manually"):
+        with st.form(key='my_form'):
+            input = st.text_input(label='Affected Population')
+            submit_button = st.form_submit_button(label='Submit')
+            if submit_button:
+                affectedpopulation = int(input)
+
        
+    if affectedpopulation != 0:
         st.write('Affected population by EarthQuake : ' + str(affectedpopulation))
-
         st.subheader('NON-FOOD RELIEF ITEMS')
-        ClothingandBedding  = 1 * affectedpopulation
-        Mattress = 1 * affectedpopulation
-        BathingSoap = 1 * affectedpopulation
-        LaundrySoap = 1 * affectedpopulation
-        Toothbrush = 1 * affectedpopulation
-        Toothpaste = 1 * affectedpopulation
-        Shampoo = 1 * affectedpopulation
-
+        rounded_population = round(1 * affectedpopulation)
+        ClothingandBedding  = rounded_population
+        Mattress = rounded_population
+        BathingSoap = rounded_population
+        LaundrySoap = rounded_population
+        Toothbrush = rounded_population
+        Toothpaste = rounded_population
+        Shampoo = rounded_population
         water = 2.7 * affectedpopulation
         rice = 420 * affectedpopulation
         lentils = 50 * affectedpopulation
@@ -180,10 +189,8 @@ elif selection == 'Estimate Food and shelter items':
         oil = 25 * affectedpopulation
         sugar = 20 * affectedpopulation
         salt = 5 * affectedpopulation
-        biscuits = 125 * affectedpopulation 
+        biscuits = 125 * affectedpopulation
         milk = 10 * affectedpopulation
-
-
         nonfoodData = {
         'Clothing/Bedding' : ClothingandBedding,
         'Mattresses/Mats' : Mattress,
@@ -191,12 +198,10 @@ elif selection == 'Estimate Food and shelter items':
         'Laundry Soap': LaundrySoap,
         'Toothbrush':Toothbrush,
         'Toothpaste':Toothpaste,
-        'Shampoo':Shampoo 
+        'Shampoo':Shampoo
         }
-
         df = pd.DataFrame(list(nonfoodData.items()), index=['1', '2', '3','4','5','6','7'], columns=['Non Food Items', 'Total Quantity based on per person'])
         st.dataframe(df,600, 300)
-
         st.subheader('FOOD RELIEF ITEMS')
         foodData = {
         'Clean Drinking Water(in litres)' : water,
@@ -210,21 +215,7 @@ elif selection == 'Estimate Food and shelter items':
         'Milk Powder(in grams)':milk
         }
         df1 = pd.DataFrame(list(foodData.items()), index=['1', '2', '3','4','5','6','7','8','9'], columns=['Food Items', 'Quantity based on person per day'])
-
         st.dataframe(df1,600, 300)
-    
-    #ClothingandBedding  = text_field("Clothing/Bedding: ",) 
-    #Mattress = text_field("Mattresses/Mats : ",) 
-    #BathingSoap = text_field("Bathing Soap : ",) 
-    #LaundrySoap = text_field("Laundry Soap : ",) 
-    #Toothbrush = text_field("Toothbrush : ",) 
-    #Toothpaste = text_field("Toothpaste : ",) 
-    #Shampoo = text_field("Shampoo : ",) 
-    #people = text_field("People affected: ",) 
-    #water = text_field("Water Bottles : ",) 
-    #milk = text_field("Milk Bottles: ",)
-    #rice  = text_field("Rice Bags: ",) 
-    #lentils = text_field("Lentil Bags: ",)
        
 elif selection=='Chatbot Assistance':
     st.image('images/unsplash2.jpg', caption='Image Credits: Credit: unsplash', width=350)
