@@ -12,7 +12,7 @@ This repository contais the work of the **AI Wonder Girls** team for the [AWS Di
 
 <img src="images/AIWonderGirlsLogo_small.png" width="200">
 
-<img src="images/Screenshot 2022-02-06 113701.jpg" width="400">
+<img src="images/aiwgv8-s2.png" width="400">
 
 ## Inspiration 
 The **AI wonder Girls** team members are experienced data scientists passionate about contributing their skills to social impact related projects.
