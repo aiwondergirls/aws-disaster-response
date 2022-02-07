@@ -1,0 +1,15 @@
+No.,Newspaper website name,title_tag,title_class,image_tag,date_tag,date_class
+1,www.abcnews.go.com,h1,Article__Headline__Title,img,div,Byline__Meta Byline__Meta--publishDate
+2,www.abc.net.au,h1,_3mBrr I7ej6 LTJIg _3qPMD _2hFDS _2Od9e _582YK _2eB4R,img,time,W-g-R _14nkQ _3BwtN _2eB4R _3qdyT
+3,www.fox2now.com,h1,article-title,img,time,(none)
+4,www.bbc.com,h1,ssrcss-115ein1-StyledHeading e1fj1fc10,img,time,(none)
+5,www.vanguardngr.com,h1,entry-title,img,time,entry-date published updated
+6,www.npr.org,div,storytitle,,time,(none)
+7,www.wsj.com,h1,wsj-article-headline,img,time,timestamp article__timestamp flexbox__flex--1
+8,www.interfax.ru,h1,h1,,span,date
+9,www.rg.ru,h1,b-material-head__title,img,span,b-material-head__date-day
+10,www.ria.ru,div,article__title,img,div,article__info-date
+11,www.lenta.ru,h1,common-head__title,img,time,common-head__info-text
+12,www.xinhuanet.com,h1,Btitle,,i,time
+13,www.bangkokbiznews.com,h1,section_title section_title_medium_var2,img,span,f_right current_date
+14,www.thairath.co.th,h1,css-s05tt0 e1ui9xgn0,"div (""background-image"")",span,css-x2q8w e1ui9xgn2

@@ -5,6 +5,11 @@ import pandas as pd
 from nlpmodel import infer as nlp
 import plotly.graph_objects as go
 import warnings
+import datetime
+from download_button import download_button
+from query import Scraper, Query
+from src.utils import standard_date_format
+
 
 warnings.filterwarnings( "ignore")
 
@@ -22,7 +27,7 @@ def text_field(label, columns=None, **input_params):
 
 st.sidebar.image('earthquake.jpg',width= 250)
 st.sidebar.write('Disaster Response Assistant')
-selection = st.sidebar.selectbox("Go to page:", [ 'Home', 'Earthquake Information' , 'Estimate Food and shelter items', 'Chatbot Assistance', 'Further Scope & Credits'])
+selection = st.sidebar.selectbox("Go to page:", [ 'Home', 'Earthquake Information' , 'Estimate Food and shelter items', 'Chatbot Assistance', 'Get News', 'Further Scope & Credits'])
 
 st.title('Disaster Response Assistant')
 
@@ -232,6 +237,124 @@ elif selection=='Chatbot Assistance':
                 output = nlp.predict(input, "firstaid")
                 st.write(output)
 
+# Get News from Newspapers and Twitter
+elif selection == 'Get News':
+    @st.cache
+    def read_csv_data():
+        country_codes = pd.read_csv("data_news/country_codes.csv")
+        return country_codes
+
+    country_codes= read_csv_data()
+
+    st.title("Earthquake News")
+
+    number_of_articles = st.slider("Select the number of texts to be scraped",
+        min_value=5, value=15, max_value=30, step=5)
+
+    col1, col2 = st.columns(2)
+    scraper_type = col1.selectbox("Select data source", ("Newspaper", "Twitter"))
+
+    country_name = st.multiselect(
+        "Select the countries", options=country_codes["Country"].to_list()
+    )
+
+    languages = ["English"]
+
+    # Input The Date Inputs
+    today = datetime.date.today()
+    tomorrow = today + datetime.timedelta(days=1)
+    col1, col2 = st.columns(2)
+    start_date = standard_date_format(col1.date_input("Start date:", today))
+    end_date = standard_date_format(col2.date_input("End date:", tomorrow))
+
+    # validate dates
+    if not (start_date <= end_date):
+        st.error("Error: End date must fall after start date.")
+
+
+    query = Query(
+        start_date=start_date,
+        end_date=end_date,
+        location=country_name,
+        event_type= 'earthquake',
+        scraper_type=scraper_type,
+        languages=languages,
+        number_of_articles=number_of_articles,
+    )
+
+
+    def get_scraped_data(query):
+        scraper = Scraper(query)
+        data = scraper.scrape()
+
+        if data is None:
+            return None
+
+        if len(data) != 0:
+            data.rename(
+                columns=dict(
+                    source_URL='url',
+                    permalink='url',
+                    media_type='data_source',
+                    timestamp = 'time'
+                ),
+                inplace=True
+            )
+
+        # limit to the requested number of items
+        if len(data) > number_of_articles:
+            data = data.iloc[:number_of_articles]
+
+        if scraper_type == "Newspaper":
+            data['body_with_title'] = data['title'] + ' ' + data['body']
+        else:
+            data['body_with_title'] = data['body']
+
+        return data
+
+
+    def find_ground_truths():
+        with st.spinner("Scraping..."):
+            data = get_scraped_data(query)
+
+        if data is None or len(data) == 0:
+            st.write("No results found.")
+            return None
+        
+        return data
+
+    if st.button("Get News"):
+        st.session_state.ground_truths = find_ground_truths()
+
+    def country_name_to_code(name):
+        return country_codes[country_codes['Country'] == name]['Alpha-2 code'].iat[0]
+
+    def country_code_to_name(name):
+        return country_codes[country_codes['Alpha-2 code'] == name]['Country'].iat[0]
+
+    if ('ground_truths' in st.session_state and
+        st.session_state.ground_truths is not None and
+        len(st.session_state.ground_truths) > 0):
+        filtered_df = st.session_state.ground_truths.copy()
+        
+        col1, col2 = st.columns(2)
+        # Filter out texts predicted not to be about disasters
+     
+        st.write("**Output News**")
+        
+        if scraper_type=="Newspaper":
+        
+            filtered_df['body']=filtered_df['body'].str[0:150]
+            filtered_df.drop(columns=  ['ID','category','language','body_with_title','keywords'], inplace=True)
+            
+        st.table(filtered_df) 
+
+        st.markdown(
+            "<br>" + download_button(filtered_df, "ground_truths.csv", "Download results as CSV"),
+            unsafe_allow_html=True
+        )    
+    
+    
 else:
     st.title('Next Steps and Credits')
     st.markdown('This project was developed by the AI Wonder Girls team based. The solution for the relief package is inspired on a [similar approach for cyclone response](https://www.crisis-response.com/Articles/593151/AI_for_disaster.aspx) to which one of the members of the team helped to implement. Next steps for this project include making it an open source project and further expansion to other types of disasters and data sources.')
