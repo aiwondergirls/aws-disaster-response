@@ -253,7 +253,7 @@ else:
 
     st.header('Other Sources:')
     st.markdown('**Relief Package:** based on the [United Nations guidelines for food and nutrition during emergencies](https://www.unhcr.org/45fa745b2.pdf)')
-    st.markdown('**Chatbot:** the model inference is implemented using (...)')
+    st.markdown('**Chatbot:** the model inference is implemented using data from [earthquakescanada.ca](https://www.earthquakescanada.ca/info-gen/faq-en.php)')
     st.image('images/AIWonderGirlsLogo_small.png', width=200)
     
 
