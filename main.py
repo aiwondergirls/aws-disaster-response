@@ -239,9 +239,10 @@ elif selection=='Chatbot Assistance':
 
 # Get News from Newspapers and Twitter
 elif selection == 'Get News':
-    @st.cache
     
     st.image('images/news.jpeg', caption='Image Credits: unsplash', width= 350)
+    
+    @st.cache
     def read_csv_data():
         country_codes = pd.read_csv("data_news/country_codes.csv")
         return country_codes
