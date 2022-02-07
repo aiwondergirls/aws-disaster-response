@@ -26,32 +26,71 @@ selection = st.sidebar.selectbox(
 
 if selection == 'Earthquake Information':
     st.title('Earthquake Information')
-    st.write(inf.predict())
+
+    details = {
+    'depth' :21,
+    'mag':6.0,
+    'mmi':6.2,
+    'Population density (people per sq. km of land area)':150,
+    'Rural population (% of total population)':87,
+    'Urban population (% of total population)':13,
+    'GDP growth (annual %)':4
+    }
+
+    df_col = pd.DataFrame(details,index = ['a'])
+   # data = pd.get_dummies(df_col, columns=["country"])
+    st.write(inf.predictAffected(df_col))
+
 elif selection == 'Estimate Food and shelter items':
     st.subheader('Estimate Food and shelter items') 
     c1, c2, c3,c4 = st.columns(4)
     with c1:
-       # c1.text_input("Country")  
-        country = c1.selectbox('Country',('China','Indonesia','Iran','Turkey','Japan','Peru','US','Italy','Afghanistan'))
+        country = c1.selectbox('Country',('Nepal','Turkey','Chile'))
+        #country = c1.selectbox('Country',('China','Indonesia','Iran','Turkey','Japan','Peru','US','Italy','Afghanistan'))
     with c2:
-        magnitude = c2.selectbox('Magnitude',('1','2','3','4','4.5','5','5.5','6'))
-    with c3:
-        mmi = c3.selectbox('MMI',('1','2','3','4','5','6'))
+        magnitude = c2.selectbox('Magnitude',(4,4.5,5,5.5,6,6.5))
+    #with c3:
+        #mmi = c3.selectbox('MMI',('1','2','3','4','5','6'))
    
     btnResult = st.button("Estimate Relief Items")
+    #st.write(magnitude)
     if btnResult:
-        # call Model inference here and get affected population
-        affectedpopulation = 100
+        if country == 'Nepal':
+            details = {
+            'depth' :21,
+            'mag':magnitude,
+            'mmi':6.2,
+            'Population density (people per sq. km of land area)':150,
+            'Rural population (% of total population)':87,
+            'Urban population (% of total population)':13,
+            'GDP growth (annual %)':4
+            }         
+        elif country == 'Turkey':
+            details = {
+            'depth' :15.5,
+            'mag':magnitude,
+            'mmi':7,
+            'Population density (people per sq. km of land area)':76,
+            'Rural population (% of total population)':40,
+            'Urban population (% of total population)':60,
+            'GDP growth (annual %)':5.6
+            }          
+        else:
+            details = {
+            'depth' :40,
+            'mag':magnitude,
+            'mmi':6,
+            'Population density (people per sq. km of land area)':20,
+            'Rural population (% of total population)':16,
+            'Urban population (% of total population)':84,
+            'GDP growth (annual %)':5
+            }           
+        df_col = pd.DataFrame(details,index = ['a'])      
+        affectedpopulation_df = inf.predictAffected(df_col)
+        affectedpopulation = affectedpopulation_df[0]
+       
         st.write('Affected population by EarthQuake : ' + str(affectedpopulation))
 
-   
-    
-    form = st.form(key='my_form')
-    form.text_input(label='Pregnant')
-    form.text_input(label='Lactating mothers')
-    form.text_input(label='Temperature')
-    submit_button = form.form_submit_button(label='Submit')
-    if submit_button:
         st.subheader('NON-FOOD RELIEF ITEMS')
         ClothingandBedding  = 1 * affectedpopulation
         Mattress = 1 * affectedpopulation
@@ -97,7 +136,7 @@ elif selection == 'Estimate Food and shelter items':
         'High-Energy Biscuits(in grams)':biscuits,
         'Milk Powder(in grams)':milk
         }
-        df1 = pd.DataFrame(list(foodData.items()), index=['1', '2', '3','4','5','6','7','8','9'], columns=['Food Items', 'Quantity based on per person per day'])
+        df1 = pd.DataFrame(list(foodData.items()), index=['1', '2', '3','4','5','6','7','8','9'], columns=['Food Items', 'Quantity based on person per day'])
 
         st.dataframe(df1,600, 300)
     

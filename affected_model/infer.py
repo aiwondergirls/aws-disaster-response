@@ -1,7 +1,16 @@
 import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.preprocessing import LabelEncoder
+import pickle 
 
+def predictAffected(df1):
+    # load the model from disk
+    bst = XGBRegressor()  # init model
+    bst.load_model('./affected_model/models/finalxgboost.model')  # load data     
+    X_test = df1
+    pred = bst.predict(X_test)
+    return pred
+   
 def predict():
     bst = XGBRegressor()  # init model
     bst.load_model('./affected_model/models/wids1.model')  # load data
