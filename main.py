@@ -3,7 +3,10 @@ from affected_model import infer as inf
 from PIL import Image
 import pandas as pd
 from nlpmodel import infer as nlp
+import plotly.graph_objects as go
+import warnings
 
+warnings.filterwarnings( "ignore")
 
 affectedpopulation = 10
 
@@ -17,30 +20,36 @@ def text_field(label, columns=None, **input_params):
     # Forward text input parameters
     return c2.text_input("", **input_params)
 
-st.title('Disaster Response Assistant')
-st.sidebar.image('earthquake.jpg')
-selection = st.sidebar.selectbox(
-    "what are you searching for?",
-    ("","Estimate Food and shelter items", "Earthquake Information")
-)
+st.sidebar.image('earthquake.jpg',width= 250)
+st.sidebar.write('Disaster Response Assistant')
+selection = st.sidebar.selectbox("Go to page:", [ 'Home', 'Earthquake Information' , 'Estimate Food and shelter items', 'Chatbot Assistance', 'Further Scope & Credits'])
 
-if selection == 'Earthquake Information':
+st.title('Disaster Response Assistant')
+
+#Home page
+if selection == 'Home':
+    st.title('Home Page')
+    st.header('Earthquake Response')
+    st.markdown("Welcome to the AI for Disaster Response Assistant! This application was developed by the [AI Wonder Girls team](https://www.linkedin.com/company/80952123/) and focuses on the case study for Earthquake Response.") 
+    st.image('images/unsplash1.jpg', caption='Image Credits: unsplash', width= 350)
+    st.write("When disaster strikes, both humanitarian organizations and local communities need to coordinate efforts to bring quick help to affected populations.")
+
+    st.write("The  Disaster Response Assistant applies multiple AI techniques to support faster disaster response operations during earthquake emergencies.")
+
+    st.write("The applications aims to help:")
+    
+    st.markdown('- *Humanitarian agents looking to improve  disaster response logistics operations*') 
+    st.markdown('- *Civilians searching for reliable information on first aids and disaster preparedness*') 
+    st.markdown('- *Decision makers who can find overall information about earthquakes from established databases*') 
+    st.markdown("The application was developed for the [AWS Disaster Response Hackathon](https://awsdisasterresponse.devpost.com/) and is currently hosted as an open source project by the AI Wonder Girls team, which plans to expand it to address other disasters types") 
+    st.markdown('More information about the project can be found at: [https://devpost.com/software/ai-wonder-girls-disaster-response](https://devpost.com/software/ai-wonder-girls-disaster-response)')
+ 
+# Earthquake info page       
+elif selection == 'Earthquake Information':
     st.title('Earthquake Information')
 
-    details = {
-    'depth' :21,
-    'mag':6.0,
-    'mmi':6.2,
-    'Population density (people per sq. km of land area)':150,
-    'Rural population (% of total population)':87,
-    'Urban population (% of total population)':13,
-    'GDP growth (annual %)':4
-    }
 
-    df_col = pd.DataFrame(details,index = ['a'])
-   # data = pd.get_dummies(df_col, columns=["country"])
-    st.write(inf.predictAffected(df_col))
-
+# Relief Package page
 elif selection == 'Estimate Food and shelter items':
     st.subheader('Estimate Food and shelter items') 
     c1, c2, c3,c4 = st.columns(4)
@@ -153,8 +162,8 @@ elif selection == 'Estimate Food and shelter items':
     #rice  = text_field("Rice Bags: ",) 
     #lentils = text_field("Lentil Bags: ",)
        
-else:
-    st.title('Main Page')
+elif selection=='Chatbot Assistance':
+    st.title('Chatbot Help')
     with st.expander("Earthquake Assistance"):
             input = st.text_input("Type your query here - ", value="", key = 1)
             if  input != "":
@@ -166,5 +175,7 @@ else:
                 output = nlp.predict(input, "firstaid")
                 st.write(output)
 
+else:
+    st.title('Next Steps and Credits')
 
 
