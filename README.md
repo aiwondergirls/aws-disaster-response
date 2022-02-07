@@ -8,63 +8,61 @@ Find out more about this project at its [Devpost page](https://devpost.com/submi
 
 ## Meet the team
 
-This repository contais the work of the **AI Wonder Girls** team for the [AWS Disaster Response Hackathon](https://ai-for-healthcare-hackathon.com/#linkchallenges)! 
+This repository contais the work of the **AI Wonder Girls** team for the [AWS Disaster Response Hackathon](https://awsdisasterresponse.devpost.com/)! 
 
 <img src="images/AIWonderGirlsLogo_small.png" width="200">
 
-<img src="images/Screenshot 2022-02-06 113701.jpg" width="400">
+<img src="images/aiwgv8-s2.png" width="400">
 
 ## Inspiration 
-The **AI wonder Girls** team members are experienced data scientists and are passionate about contributing their skills to Healthcare Domain.
+The **AI wonder Girls** team members are experienced data scientists passionate about contributing their skills to social impact related projects.
 
 ## What our tool does
+Our AI assistant is an application that combines multiple advanced AI techniques to help user during an earthquake emergency.
 
+Using machine learning models, our assistant is trained to estimates the number of affected people in an earthquake event, based on the data of multiple official databases (USGS.gov, EMDAT and World Bank indicators).
+
+The application utilizes WHO and disaster response guidelines combined with the number of affected estimations to build a package of food and non-food items necessary to supply the affected populations during the emergency.
+
+Our application also aims to support civilians and local authorities during earthquakes. By providing analytics on the topic, a newspapers news search about earthquakes and an integrated chatbot, users are able to receive reliable information on first aid and standard protocol for emergencies.
+
+We believe that our application can significantly improve the efficiency of humanitarian logistics operations and ultimately save lives.
 
 The **implementation** 
 
-## Challenges we faced
--
+The AI for Disaster Assistant is built using a Streamlit front end web end application integrated to the AWS Sagemaker Lab via a continuous integration deployment, where different AI applications are trained.
+
+Details of implementation of each feature in the application are:
+
+  - **Analytics Module:** contains historical information summarized in visualizations to help the users to understand the global context of earthquake catastrophes. This feature is aimed to bring value to local authorities and support a data-driven decision making on mitigating actions.
+
+- **Relief Package Module:** implementation of state of the art machine learning models on a multiple context dataset, which connects earthquake, disaster management and socioeconomic contexts.
+
+- **Chatbot Module:** implementation of a chatbot which assists users by answering questions about earthquakes and first aid practices.
+
+ - **Earthquake News Module:** scrapes articles about earthquakes from newspapers and Twitter and displays their information and URLs.
 
 ## Accomplishments that we're proud of
 - Training an AI model for aiding relief efforts to Earthquake disaters by predicting the affected poulation.
 - Building an Application User interface with Streamlit and Python.
 - Allowing people to query disaster related details through NLP reports. 
+- Make it easier to user to find local news about earthquakes. 
 
-And participating in the Hackathon!
+And of course, we are proud of participating in another inspiring Hackathon!
  
 
-<img src=" " width="700">
-
-*Streamlit Application: NLP query application*
-
-<img src=" " width="700">
-
-*Potential Application: Fill in*
-
-
-## What we learned
-TB Added
-
 ## The pillars of our project
-TBAdded
 
-**Innovation:** The application and inference pipeline are built with standard *REST APIs* and *opensource libraries* frameworks which can integrate well with the existing AI models currently in use. Thus significantly improving the integration of AI into disaster response systems and enhancing the benefits the diasaster affected population. The possible identification of high-affected populations, the application will allow Relief agencies to aid and support to the most needy, saving more lives.
-
-**Impact:** 
-TDAdded. 
-
-**Implementation:** The application uses Python, Fastapi, Streamlit, fpdf libraries. The model is trained, optimized, and performs with an accuracy of X% on the validation dataset.  
-
-**Feasibility:** The UI application, model are built with python, REST APIs and opensource libraries, frameworks. 
-
-**Extendibility:** One can use the application for other types of disaters such as  Cyclones, and  Fires and can be integrated well with Relief efforts.
+<img src="images/aiwgv8-s6.png" width="500">
 
 
+## Streamlit appications
 
-<img src=" " width="500">
-
+<img src="images/app-info.png" width="500">
+<img src="images/app-food.png" width="500">
+<img src="images/app-nlp.png" width="500">
 
 
 ## What's next 
-- Extending Notifications beyond ...
-- Expanding to other AI models in practice. 
+- Extending the app to other applications.
+- Adding more reliable data sources to the existing modules.
