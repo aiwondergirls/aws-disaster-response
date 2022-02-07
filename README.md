@@ -53,12 +53,14 @@ And of course, we are proud of participating in another inspiring Hackathon!
 
 ## The pillars of our project
 
-<img src=" " width="500">
+<img src="images/aiwgv8-s6.png" width="500">
 
 
-## The pillars of our project
+## Streamlit appications
 
-<img src=" " width="500">
+<img src="images/app-info.png" width="500">
+<img src="images/app-food.png" width="500">
+<img src="images/app-nlp.png" width="500">
 
 
 ## What's next 
