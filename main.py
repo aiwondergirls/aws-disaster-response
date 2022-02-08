@@ -239,6 +239,10 @@ elif selection=='Chatbot Assistance':
 
 # Get News from Newspapers and Twitter
 elif selection == 'Get News':
+    try:
+        import pygooglenews
+    except ImportError:
+        pygooglenews = None
     
     st.image('images/news.jpeg', caption='Image Credits: unsplash', width= 350)
     
@@ -255,7 +259,10 @@ elif selection == 'Get News':
         min_value=5, value=15, max_value=30, step=5)
 
     col1, col2 = st.columns(2)
-    scraper_type = col1.selectbox("Select data source", ("Newspaper", "Twitter"))
+    if pygooglenews:
+        scraper_type = col1.selectbox("Select data source", ("Newspaper", "Twitter"))
+    else:
+        scraper_type = col1.selectbox("Select data source", ("Twitter"))
 
     country_name = st.multiselect(
         "Select the countries", options=country_codes["Country"].to_list()

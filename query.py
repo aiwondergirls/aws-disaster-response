@@ -1,7 +1,10 @@
 import pandas as pd
 import streamlit as st
 
-from src.newspaper_scraping import Newspaper_agent
+try:
+    from src.newspaper_scraping import Newspaper_agent
+except ImportError:
+    Newpaper_agent = None
 from src.twitter_scraping import Twitter_agent
 
 country_codes = pd.read_csv("data_news/country_codes.csv")
