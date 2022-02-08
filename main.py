@@ -262,7 +262,7 @@ elif selection == 'Get News':
     if pygooglenews:
         scraper_type = col1.selectbox("Select data source", ("Newspaper", "Twitter"))
     else:
-        scraper_type = col1.selectbox("Select data source", ("Twitter"))
+        scraper_type = col1.selectbox("Select data source", ("Twitter",))
 
     country_name = st.multiselect(
         "Select the countries", options=country_codes["Country"].to_list()
