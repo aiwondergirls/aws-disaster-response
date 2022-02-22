@@ -7,7 +7,7 @@ wincertstore==0.2
 #xgboost==1.5.2
 xgboost
 streamlit==1.5.0
-#numpy==1.20.2
+#numpy==1.21
 pandas
 plotly==5.3.1
 nltk==3.6.7
