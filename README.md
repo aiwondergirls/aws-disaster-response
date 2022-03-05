@@ -1,5 +1,7 @@
 # AWS Disaster Response
 
+**Update - To open this project in AWS SageMaker StudioLab, please visit [this](https://github.com/aiwondergirls/aws-disaster-response/blob/main/SageMaker-StudioLab.ipynb) notebook.**
+
 <img src="images/PHOTO-Climate-Collage-Diagonal-Design-NOAA-Communications-080621.jpg" width="600">
 
 Image credit: NOAA
